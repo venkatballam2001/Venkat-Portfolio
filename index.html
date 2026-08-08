@@ -647,12 +647,24 @@
       grid-template-columns: 1fr 1fr;
       gap: 48px;
       align-items: center;
-      padding: 44px 0;
-      border-top: 1px solid rgba(51, 65, 85, 0.5);
+      padding: 32px;
+      background: rgba(30, 41, 59, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 28px;
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .project:hover {
+      border-color: rgba(6, 182, 212, 0.5);
+      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.12);
+      transform: translateY(-2px);
     }
 
     .project:last-of-type {
-      border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+      margin-bottom: 0;
     }
 
     .project.reverse .project-visual {
@@ -663,6 +675,7 @@
       .project {
         grid-template-columns: 1fr;
         gap: 24px;
+        padding: 24px;
       }
 
       .project.reverse .project-visual {
@@ -673,7 +686,9 @@
     .project-visual {
       border: 1px solid var(--border);
       border-radius: 14px;
-      background: var(--surface);
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       aspect-ratio: 4/3;
       display: flex;
       align-items: center;
@@ -1296,7 +1311,7 @@
           </div>
         </div>
         <div class="hero-image">
-          <img src="assets/profile_pic.jpeg" alt="Portrait of Venkat Ballam" />
+          <img src="assets/profile_pic.png" alt="Portrait of Venkat Ballam" />
         </div>
       </div>
     </section>
@@ -1375,21 +1390,22 @@
         </div>
 
         <div class="project">
-          <div class="project-visual"><img src="assets/project_one.png" alt="Cloud Removal GAN"
+          <div class="project-visual"><img src="assets/project-one.png" alt="Cloud Removal GAN"
               style="width: 100%; height: 100%; object-fit: cover;"></div>
           <div>
-            <h3 class="project-name">Cloud Removal GAN</h3>
+            <h3 class="project-name">StudentHub – Full-Stack Student Management System</h3>
             <ul class="star-row">
-              <li><b>Challenge:</b> Satellite imagery is frequently obscured by cloud cover, degrading data used for
-                downstream analysis.</li>
-              <li><b>Build:</b> Designed and trained a Generative Adversarial Network to reconstruct cloud-free imagery
-                from cloud-obscured satellite input.</li>
-              <li><b>Impact:</b> Produced a working generative pipeline for image-to-image translation, applying GAN
-                architecture to a real remote-sensing problem.</li>
+              <li><b>Challenge:</b> Managing student records efficiently requires a simple interface with reliable data
+                operations and easy access to student information.</li>
+              <li><b>Build:</b> Developed a responsive full-stack student management application using React.js,
+                Node.js, Express.js, and SQLite, with REST APIs, Axios integration, React Router navigation, and
+                complete CRUD functionality.</li>
+              <li><b>Impact:</b> Built a functional system for adding, updating, deleting, searching, and sorting
+                student records, with a clean responsive interface and persistent database storage.</li>
             </ul>
-            <div class="tags"><span class="tag">GANs</span><span class="tag">Computer Vision</span><span
-                class="tag">Python</span></div>
-            <a class="repo-link" href="https://github.com/venkatballam2001/cloud-removal-gan" target="_blank"
+            <div class="tags"><span class="tag">React.js</span><span class="tag">Node.js</span><span
+                class="tag">Express.js</span><span class="tag">SQLite</span></div>
+            <a class="repo-link" href="https://github.com/venkatballam2001/StudentHub" target="_blank"
               rel="noopener">View repository →</a>
           </div>
         </div>
@@ -1398,43 +1414,46 @@
           <div class="project-visual"><img src="assets/project_two.png" alt="Student Management System"
               style="width: 100%; height: 100%; object-fit: cover;"></div>
           <div>
-            <h3 class="project-name">Student Management System</h3>
+            <h3 class="project-name">Sewing Machine Business Website</h3>
             <ul class="star-row">
-              <li><b>Challenge:</b> Institutions need a reliable way to record, update, and retrieve student records
-                without manual overhead.</li>
-              <li><b>Build:</b> Built a full-stack application handling student data end-to-end &mdash; CRUD operations,
-                structured storage, and a usable interface.</li>
-              <li><b>Impact:</b> Delivered a functional system demonstrating solid application architecture and
-                front-end-to-database integration.</li>
+              <li><b>Challenge:</b> Helped a local sewing machine business establish an online presence and showcase its
+                products through a professional, responsive website.</li>
+              <li><b>Build:</b> Designed and developed a responsive website using HTML, CSS, and Bootstrap, with a clean
+                product showcase and layouts optimized for both desktop and mobile devices.</li>
+              <li><b>Impact:</b> Created a user-friendly digital presence that makes it easier for customers to explore
+                the business and its products across different screen sizes.</li>
             </ul>
-            <div class="tags"><span class="tag">Full-Stack</span><span class="tag">Database Design</span><span
-                class="tag">CRUD</span></div>
-            <a class="repo-link" href="https://github.com/venkatballam2001/student-management-system" target="_blank"
-              rel="noopener">View repository →</a>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span
+                class="tag">Bootstrap</span><span class="tag">Responsive Design</span></div>
+            <a class="repo-link"
+              href="https://github.com/venkatballam2001/sewing-machine-website#sewing-machine-business-website"
+              target="_blank" rel="noopener">View repository →</a>
           </div>
         </div>
 
         <div class="project">
-          <div class="project-visual"><img src="assets/project_three.jpg" alt="Hackathon Design Thinking Sprint"
+          <div class="project-visual"><img src="assets/project_three.png" alt="Hackathon Design Thinking Sprint"
               style="width: 100%; height: 100%; object-fit: cover;"></div>
           <div>
-            <h3 class="project-name">Hackathon &mdash; Design Thinking Sprint</h3>
+            <h3 class="project-name">Holi Festival Responsive Webpage</h3>
             <ul class="star-row">
-              <li><b>Challenge:</b> Competing in a machine learning hackathon required turning an open-ended problem
-                statement into a market-ready concept.</li>
-              <li><b>Build:</b> Applied design-thinking methodology to shape the product direction, pairing it with a
-                business model alongside the underlying ML architecture.</li>
-              <li><b>Impact:</b> Turned a technical problem into a structured proposal &mdash; product vision, business
-                model, and ML strategy in one submission.</li>
+              <li><b>Challenge:</b> Build a visually engaging festival website while learning the fundamentals of
+                responsive web development.</li>
+              <li><b>Build:</b> Created a colorful and responsive Holi festival website using HTML, CSS, and Bootstrap,
+                focusing on structured layouts, styling, and mobile-friendly design.</li>
+              <li><b>Impact:</b> Strengthened my foundation in responsive web design, Bootstrap, and frontend
+                development while building one of my first projects during my Full Stack Development journey.</li>
             </ul>
-            <div class="tags"><span class="tag">Design Thinking</span><span class="tag">Business Modeling</span><span
-                class="tag">Strategy</span></div>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span
+                class="tag">Bootstrap</span><span class="tag">Responsive Design</span></div>
+            <a class="repo-link" href="https://github.com/venkatballam2001/holi-festival-website" target="_blank"
+              rel="noopener">View repository →</a>
           </div>
         </div>
 
         <div class="project reverse">
           <div class="project-visual">
-            <img src="assets/portfolio_screenshot.png" alt="Developer Portfolio"
+            <img src="assets/image.png?v=2026" alt="Developer Portfolio"
               style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <div>
@@ -1449,7 +1468,7 @@
             </ul>
             <div class="tags"><span class="tag">Vanilla JS</span><span class="tag">CSS Animations</span><span
                 class="tag">Anime.js</span></div>
-            <a class="repo-link" href="https://github.com/venkatballam2001/my-portfolio" target="_blank"
+            <a class="repo-link" href="https://github.com/venkatballam2001/Venkat-Portfolio" target="_blank"
               rel="noopener">View repository →</a>
           </div>
         </div>
@@ -1694,8 +1713,8 @@
               updated_at: new Date().toISOString()
             },
             {
-              html_url: "https://github.com/venkatballam2001/my-portfolio",
-              name: "my-portfolio",
+              html_url: "https://github.com/venkatballam2001/Venkat-Portfolio",
+              name: "Venkat-Portfolio",
               description: "My personal portfolio website.",
               updated_at: new Date().toISOString()
             }
