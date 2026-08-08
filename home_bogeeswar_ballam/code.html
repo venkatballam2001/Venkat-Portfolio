@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Architect.AI | Bogeeswar Ballam</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --cyan-glow: rgba(6, 182, 212, 0.35);
+            --purple-glow: rgba(139, 92, 246, 0.16);
+        }
+        body {
+            background-color: #0d1322;
+            color: #dde2f8;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .terminal-header {
+            background: #191f2f;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .cyan-shadow {
+            box-shadow: 0 0 20px var(--cyan-glow);
+        }
+        .purple-shadow {
+            box-shadow: 0 0 20px var(--purple-glow);
+        }
+        @keyframes pulse-cyan {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        .status-pulse {
+            animation: pulse-cyan 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface-variant": "#bcc9cd",
+                        "inverse-primary": "#00687a",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-variant": "#2f3445",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#dde2f8",
+                        "surface-container": "#191f2f",
+                        "primary-fixed": "#acedff",
+                        "outline-variant": "#3d494c",
+                        "outline": "#869397",
+                        "surface-container-highest": "#2f3445",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-container-lowest": "#080e1d",
+                        "bg-soft": "#0E1526",
+                        "on-primary-fixed": "#001f26",
+                        "on-tertiary-container": "#393d3e",
+                        "primary-container": "#06b6d4",
+                        "on-secondary": "#3c0091",
+                        "border": "#334155",
+                        "tertiary-fixed-dim": "#c4c7c9",
+                        "surface-bright": "#33394a",
+                        "on-primary": "#003640",
+                        "cyan-glow": "rgba(6,182,212,0.35)",
+                        "on-background": "#dde2f8",
+                        "on-tertiary-fixed": "#191c1e",
+                        "surface-container-low": "#151b2b",
+                        "secondary-container": "#571bc1",
+                        "error-container": "#93000a",
+                        "surface-elevated": "#172033",
+                        "tertiary-fixed": "#e0e3e5",
+                        "primary": "#4cd7f6",
+                        "on-primary-fixed-variant": "#004e5c",
+                        "error": "#ffb4ab",
+                        "purple-glow": "rgba(139,92,246,0.16)",
+                        "on-tertiary": "#2d3133",
+                        "primary-fixed-dim": "#4cd7f6",
+                        "on-primary-container": "#00424f",
+                        "secondary-fixed": "#e9ddff",
+                        "text-muted": "#94A3B8",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "on-secondary-container": "#c4abff",
+                        "surface-dim": "#0d1322",
+                        "surface-container-high": "#242a3a",
+                        "inverse-on-surface": "#2a3040",
+                        "tertiary": "#c4c7c9",
+                        "surface": "#1E293B",
+                        "background": "#0d1322",
+                        "inverse-surface": "#dde2f8",
+                        "tertiary-container": "#a4a7a9",
+                        "surface-tint": "#4cd7f6",
+                        "secondary": "#d0bcff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "margin-desktop": "48px",
+                        "gutter": "20px",
+                        "margin-mobile": "24px",
+                        "section-v-padding": "72px",
+                        "unit": "4px",
+                        "max-width": "1120px"
+                    },
+                    fontFamily: {
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "title-sm": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-md": ["Inter"],
+                        "data-mono": ["JetBrains Mono"],
+                        "label-mono": ["JetBrains Mono"],
+                        "action-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-lg": ["56px", { "lineHeight": "1.12", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-sm": ["17px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-md": ["15px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "data-mono": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-mono": ["12.5px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "action-md": ["15px", { "lineHeight": "1", "fontWeight": "600" }],
+                        "body-lg": ["17px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border/50 shadow-sm">
+<div class="flex justify-between items-center max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop h-16">
+<div class="font-headline-md text-headline-md font-bold text-primary tracking-tighter">ARCHITECT.AI</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="font-action-md text-action-md text-on-surface-variant hover:text-primary transition-colors" href="#skills">Skills</a>
+<a class="font-action-md text-action-md text-on-surface-variant hover:text-primary transition-colors" href="#live-code">Live Code</a>
+<a class="font-action-md text-action-md text-on-surface-variant hover:text-primary transition-colors" href="#projects">Projects</a>
+<a class="font-action-md text-action-md text-on-surface-variant hover:text-primary transition-colors" href="#education">Education</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="bg-primary text-on-primary font-action-md px-6 py-2 rounded-lg hover:translate-y-[-2px] hover:cyan-glow transition-all duration-300 active:scale-95">Hire Me</button>
+<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden border border-border">
+<img class="w-full h-full object-cover" data-alt="A professional close-up headshot of a software architect in a high-tech dark studio. The lighting is dominated by a sharp cyan rim light on the side of the face, creating a dramatic and intelligent look. The background is softly blurred with subtle bokeh effects from server rack LEDs in deep purple and navy blue. The overall mood is focused, authoritative, and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG37IUFi3ygtDCJ7mAaAX3XfX-ncARVncmm2JUIpjZS7VKSmfZAjn2wHd2H7T7gY1lNreQx12hqKg6XIqrujI_VXMIYicXXro9OqDbd3seHzRFD7FU76dYxLeJTrLFgYLrPiuipoiJ9o3dd88goF3JSsOYS5B57QHm1zE4xn6GPG4NNXGfoqV7I_g7pzBINkZ35zMdgSZ-ul295x7iBAs_kyKIQS-DxCWMIxlWo9orKUE0onHpPlz0fzBREHn1HSI7qVc_DKrj6Q"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center overflow-hidden px-margin-mobile md:px-margin-desktop py-section-v-padding">
+<div class="absolute inset-0 z-0 pointer-events-none">
+
+</div>
+<div class="relative z-10 max-w-max-width mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8">
+<div class="inline-flex items-center space-x-3 px-3 py-1 rounded-full border border-primary/30 bg-primary/10">
+<span class="w-2 h-2 rounded-full bg-primary status-pulse"></span>
+<span class="font-label-mono text-label-mono text-primary uppercase tracking-widest">Available for Architecture Audits</span>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">
+                        Training complex models.<br/>
+<span class="text-primary">Building scalable apps.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-text-muted max-w-lg">
+                        Bogeeswar Ballam is a Full-Stack Architect specialized in the convergence of Generative AI and High-Availability Distributed Systems. Engineering the future, one microservice at a time.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary font-action-md px-8 py-4 rounded-xl hover:translate-y-[-2px] cyan-glow transition-all duration-300">
+                            Explore Projects
+                        </button>
+<button class="border border-secondary text-secondary font-action-md px-8 py-4 rounded-xl hover:bg-secondary/10 transition-all duration-300">
+                            View Documentation
+                        </button>
+</div>
+</div>
+<div class="relative flex justify-center lg:justify-end">
+<div class="w-full max-w-md aspect-square relative">
+<!-- Convergence Graphic -->
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full blur-[80px]"></div>
+<div class="relative glass-panel rounded-3xl p-8 border border-white/10 flex flex-col justify-center items-center text-center space-y-6">
+<span class="material-symbols-outlined text-6xl text-primary" style="font-variation-settings: 'FILL' 1;">hub</span>
+<div class="font-headline-md text-headline-md">The Convergence</div>
+<p class="font-body-md text-body-md text-text-muted">Where LLM logic meets horizontally scaled infrastructure.</p>
+<div class="w-full grid grid-cols-3 gap-2">
+<div class="h-1 bg-primary/30 rounded-full"></div>
+<div class="h-1 bg-primary rounded-full shadow-cyan-glow"></div>
+<div class="h-1 bg-primary/30 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Core Proficiencies -->
+<section class="bg-surface-container-lowest py-section-v-padding px-margin-mobile md:px-margin-desktop" id="skills">
+<div class="max-w-max-width mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div>
+<h2 class="font-headline-md text-headline-md mb-2">Core Proficiencies</h2>
+<p class="font-body-md text-body-md text-text-muted">Technical domain expertise in full-stack architecture.</p>
+</div>
+<div class="font-label-mono text-label-mono text-primary bg-primary/10 px-4 py-2 border border-primary/20 rounded-lg">
+                        LAST UPDATED: 2024.10.12
+                    </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Proficiency Card 1 -->
+<div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-colors group">
+<span class="material-symbols-outlined text-primary mb-4 block" style="font-variation-settings: 'FILL' 1;">neurology</span>
+<h3 class="font-title-sm text-title-sm mb-3">AI Engineering</h3>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-mono text-label-mono bg-bg-soft border border-border px-2 py-1 rounded">PyTorch</span>
+<span class="font-label-mono text-label-mono bg-bg-soft border border-border px-2 py-1 rounded">LangChain</span>
+<span class="font-label-mono text-label-mono bg-bg-soft border border-border px-2 py-1 rounded">RAG</span>
+</div>
+</div>
+<!-- Proficiency Card 2 -->
+<div class="glass-panel p-6 rounded-2xl hover:border-secondary/50 transition-colors group">
+<span class="material-symbols-outlined text-secondary mb-4 block" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<h3 class="font-title-sm text-title-sm mb-3">Cloud Systems</h3>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-mono text-label-mono bg-bg-soft border border-border px-2 py-1 rounded">Kubernetes</span>
+<span class="font-label-mono text-label-mono bg-bg-soft border border-border px-2 py-1 rounded">AWS</span>
+<span class="font-label-mono text-label-mono bg-bg-soft border border-border px-2 py-1 rounded">Terraform</span>
+</div>
+</div>
+<!-- Proficiency Card 3 -->
+<div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-colors group">
+<span class="material-symbols-outlined text-primary mb-4 block" style="font-variation-settings: 'FILL' 1;">layers</span>
+<h3 class="font-title-sm text-title-sm mb-3">Backend Master</h3>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-mono text-label-mono bg-bg-soft border border-border px-2 py-1 rounded">Node.js</span>
+<span class="font-label-mono text-label-mono bg-bg-soft border border-border px-2 py-1 rounded">Go</span>
+<span class="font-label-mono text-label-mono bg-bg-soft border border-border px-2 py-1 rounded">PostgreSQL</span>
+</div>
+</div>
+<!-- Proficiency Card 4 -->
+<div class="glass-panel p-6 rounded-2xl hover:border-secondary/50 transition-colors group">
+<span class="material-symbols-outlined text-secondary mb-4 block" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h3 class="font-title-sm text-title-sm mb-3">Frontend Ops</h3>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-mono text-label-mono bg-bg-soft border border-border px-2 py-1 rounded">Next.js</span>
+<span class="font-label-mono text-label-mono bg-bg-soft border border-border px-2 py-1 rounded">Three.js</span>
+<span class="font-label-mono text-label-mono bg-bg-soft border border-border px-2 py-1 rounded">Tailwind</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Live Activity Terminal -->
+<section class="py-section-v-padding px-margin-mobile md:px-margin-desktop overflow-hidden" id="live-code">
+<div class="max-w-max-width mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-md text-headline-md mb-4">Live Activity</h2>
+<p class="font-body-md text-body-md text-text-muted">Real-time synchronization with GitHub production clusters.</p>
+</div>
+<div class="relative">
+<!-- Background Glows -->
+<div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
+<div class="absolute -bottom-20 -right-20 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full"></div>
+<div class="w-full max-w-4xl mx-auto rounded-xl overflow-hidden border border-border shadow-2xl">
+<!-- Terminal Header -->
+<div class="terminal-header flex items-center justify-between px-4 py-3">
+<div class="flex space-x-2">
+<div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+<div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+<div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+</div>
+<div class="font-label-mono text-label-mono text-text-muted">bogeeswar@architect-ai: ~/dev/github-sync</div>
+<div class="w-12"></div>
+</div>
+<!-- Terminal Body -->
+<div class="bg-bg-soft p-6 font-data-mono text-data-mono leading-relaxed h-[400px] overflow-y-auto custom-scrollbar">
+<div class="mb-4">
+<span class="text-secondary"># Listening for webhooks...</span><br/>
+<span class="text-primary">[SYSTEM]</span> GitHub sync connection established.
+                            </div>
+<div class="space-y-1" id="terminal-content">
+<div class="flex space-x-3">
+<span class="text-text-muted">[10:14:22]</span>
+<span class="text-primary">COMMIT</span>
+<span>feat: implemented new RAG pipeline for documentation parsing</span>
+</div>
+<div class="flex space-x-3">
+<span class="text-text-muted">[10:15:05]</span>
+<span class="text-green-400">BUILD</span>
+<span>production-v2.4.1 initialized in cluster-alpha</span>
+</div>
+<div class="flex space-x-3">
+<span class="text-text-muted">[11:02:11]</span>
+<span class="text-primary">PUSH</span>
+<span>origin/main: architecture optimization for multi-region DB</span>
+</div>
+<div class="flex space-x-3">
+<span class="text-text-muted">[11:24:59]</span>
+<span class="text-yellow-400">WARN</span>
+<span>high memory usage detected in worker-node-04</span>
+</div>
+<div class="flex space-x-3">
+<span class="text-text-muted">[11:25:30]</span>
+<span class="text-primary">SYNC</span>
+<span>automated scaling event: +2 instances added to pool</span>
+</div>
+</div>
+<div class="mt-4 flex items-center space-x-2">
+<span class="text-primary">❯</span>
+<span class="w-2 h-5 bg-primary animate-pulse"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects (Bento Grid) -->
+<section class="bg-surface-container-low py-section-v-padding px-margin-mobile md:px-margin-desktop" id="projects">
+<div class="max-w-max-width mx-auto">
+<div class="mb-12">
+<h2 class="font-headline-md text-headline-md">Strategic Projects</h2>
+<p class="font-body-md text-body-md text-text-muted">Selected works demonstrating technical architectural depth.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Project 1 (Large) -->
+<div class="md:col-span-8 group relative rounded-3xl overflow-hidden glass-panel h-[450px]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic, high-resolution rendering of a massive futuristic server room with rows of glowing cyan cooling pipes and floating digital holographic displays. The atmosphere is filled with a soft neon purple haze, reflecting the advanced AI infrastructure and massive data processing capabilities. Wide angle shot, highly detailed, photorealistic technological marvel." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAli5EAuAp_r4TFGw4yk2YjPS8WgVISHPzGILa1wkDZGCX5JCm4_upWj1g_RjYi0Z1q5jr6JKsK77FIwuLv9q1XQn8oTVa19_M9CTzkRK3Bk4yaWzFieWL6g-42kNKD3S5yobfcAd4NdpObKISdsbAe1786TREqxwIMte93GLatktvgGM7edhHyeqLuZqaYMjaqkXwD635vambyi8FHtWjlEhVoe1vQhhiqBXVqv3VrdHOMfVfV_Wh-BdxNYxQn7bu_NicX-Aml4g')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="flex items-center space-x-2 mb-4">
+<span class="bg-primary/20 text-primary font-label-mono text-label-mono px-3 py-1 rounded-full border border-primary/30">AI ARCHITECTURE</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">NeuralScale Distributed Engine</h3>
+<p class="font-body-md text-body-md text-text-muted max-w-lg mb-6">A high-performance training orchestration layer for LLMs across distributed GPU clusters with auto-healing capabilities.</p>
+<a class="inline-flex items-center space-x-2 text-primary hover:translate-x-2 transition-transform" href="#">
+<span class="font-action-md text-action-md">Review Architecture</span>
+<span class="material-symbols-outlined">arrow_right_alt</span>
+</a>
+</div>
+</div>
+<!-- Project 2 (Square) -->
+<div class="md:col-span-4 group relative rounded-3xl overflow-hidden glass-panel h-[450px]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A conceptual 3D digital art piece showing intricate glowing lines of light connecting spheres in a dark void. The colors shift from electric cyan to deep violet, symbolizing the flow of data through a complex neural network. The aesthetic is clean, minimalist, and very technical, reminiscent of a high-end data visualization tool." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCUH-4Pd13HgRMiM11OHYGj7by9gdeay8TJUlmHctb8h9Vn31dX2BNyptOYVkZcpfrkUOMr5oXXEsBvDyKsRPv4pjw9jJHlxVFs15XKaUxb9OQIY5Z2n_IM7Gw0YrBWp93Y3jnHfBzlsjapRWPixYmcgKHASq1Dd85ecBADSkaXExXH4osKU5nsdVQd_OwptIWC5OFLayeFs0YHdWyCtp2_3JdT2vxIRFY5cC3ep1TbXqes0Mqcuv8S83sCfAXpfZd57Me7dGM5BA')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="flex items-center space-x-2 mb-4">
+<span class="bg-secondary/20 text-secondary font-label-mono text-label-mono px-3 py-1 rounded-full border border-secondary/30">BLOCKCHAIN</span>
+</div>
+<h3 class="font-title-sm text-title-sm mb-2">L2 Scaling Solution</h3>
+<p class="font-body-md text-body-md text-text-muted mb-6">Optimizing throughput for high-frequency trading assets.</p>
+<a class="inline-flex items-center space-x-2 text-secondary" href="#">
+<span class="font-action-md text-action-md">View Git</span>
+<span class="material-symbols-outlined">link</span>
+</a>
+</div>
+</div>
+<!-- Project 3 (Bottom Left) -->
+<div class="md:col-span-6 group relative rounded-3xl overflow-hidden glass-panel h-[350px]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Close-up of a high-tech control panel with dozens of small, illuminated tactile buttons and digital sliders in a dark, sleek design. Subtle light leaks from the edges highlight the premium materials. The UI displayed on a small integrated screen shows complex server metrics in a crisp monospaced font. Night mode aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXZ-4KM1XLbut-l7r-FpO4BdvdLgPcXzprKDSyWsvzl5s-oQ1GmcuB7iqMfHqAm_PG9LMn3hJtrfaPlzpnl9iQEEvUgDZr_T9h1OOQ9YByxnXvddceNjEn8AbIfNlwuOv8_vBT1tYqQNEVXtxzAkd4lPqgl4YkKJmaAm1Gp2uXlyL1SKG7eys23WGt8K0bQ_Bg0xBgxgsrb0Vx0kRGfbZ2CZJEIfJ05dUBUJUpzO7akqCiFg_dFewYfPgzFurnrdSU8K5ZW6JOJQ')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<h3 class="font-title-sm text-title-sm mb-2">Cyber-Physical Dashboard</h3>
+<p class="font-body-md text-body-md text-text-muted">Real-time IoT telemetry visualization for smart city grids.</p>
+</div>
+</div>
+<!-- Project 4 (Bottom Right) -->
+<div class="md:col-span-6 group relative rounded-3xl overflow-hidden glass-panel h-[350px]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="An abstract visualization of code streaming through space like shooting stars. The background is a deep midnight navy with neon cyan and purple light trails that form architectural shapes and patterns. It feels futuristic, fast-paced, and highly organized. Professional digital art style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBtbOciXu03ftUWI5zKuAObuePb0j50wrpFsmjRwWs6rzGZ8KDVeQiiCkagUerdbMI51B204TxWHmVl1XG_0tnb7ZW0mSXkvF-s53doYucQ4tVVT32Gn8WXBS92LAnWfHMZkDAFkW3NZed_EzBXLsdZKFxHiYV1aVVCZEVsF2Hvd_Zv72WSpHl3IsWEaGYuBJirAqpk0QtX8zWJWyUapov4MIGh3VVNJ0GoqrB9d7APsf8Fg_LiGrn6LnIKT95d4nM_SN7G45LUsQ')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<h3 class="font-title-sm text-title-sm mb-2">DevOps Automation Toolkit</h3>
+<p class="font-body-md text-body-md text-text-muted">Custom CLI tools for zero-downtime deployment pipelines.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full py-section-v-padding border-t border-border">
+<div class="flex flex-col items-center justify-center max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop space-y-gutter text-center">
+<div class="font-headline-md text-headline-md text-primary font-bold tracking-tighter mb-4">ARCHITECT.AI</div>
+<p class="font-body-md text-body-md text-text-muted max-w-md">Building the digital foundations for the next generation of artificial intelligence and distributed power.</p>
+<div class="flex space-x-6">
+<a class="text-text-muted hover:text-secondary-fixed-dim transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-2xl">terminal</span>
+</a>
+<a class="text-text-muted hover:text-secondary-fixed-dim transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-2xl">code</span>
+</a>
+<a class="text-text-muted hover:text-secondary-fixed-dim transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-2xl">mail</span>
+</a>
+</div>
+<div class="font-body-md text-body-md text-text-muted pt-8">
+                © 2024 Architect.AI - Engineered for the Future
+            </div>
+</div>
+</footer>
+<script>
+        // Micro-interaction: Terminal activity simulation
+        const terminalContent = document.getElementById('terminal-content');
+        const activities = [
+            { type: 'COMMIT', text: 'refactor: optimized vector embeddings lookup', color: 'text-primary' },
+            { type: 'BUILD', text: 'staging-env-prep: containerizing microservice "echo"', color: 'text-green-400' },
+            { type: 'SYNC', text: 'database migration completed: schema version 1.9.4', color: 'text-primary' },
+            { type: 'INFO', text: 'cache-miss rate dropped to 0.4% after optimization', color: 'text-secondary' },
+            { type: 'PUSH', text: 'hotfix: resolved memory leak in websocket-proxy', color: 'text-primary' }
+        ];
+
+        function addActivity() {
+            const now = new Date();
+            const timestamp = `[${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}]`;
+            const act = activities[Math.floor(Math.random() * activities.length)];
+            
+            const div = document.createElement('div');
+            div.className = 'flex space-x-3 opacity-0 transition-opacity duration-500';
+            div.innerHTML = `
+                <span class="text-text-muted">${timestamp}</span>
+                <span class="${act.color}">${act.type}</span>
+                <span>${act.text}</span>
+            `;
+            
+            terminalContent.appendChild(div);
+            setTimeout(() => div.classList.remove('opacity-0'), 50);
+            
+            if (terminalContent.children.length > 10) {
+                terminalContent.removeChild(terminalContent.firstChild);
+            }
+            
+            terminalContent.parentElement.scrollTop = terminalContent.parentElement.scrollHeight;
+        }
+
+        setInterval(addActivity, 3000);
+
+        // Simple smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>
